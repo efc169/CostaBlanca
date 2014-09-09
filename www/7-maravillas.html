@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<link rel='stylesheet'  href='css/estilos.css' type='text/css' media='all' />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<!--<script type="text/javascript">
+	var hostweburl;
+	var appweburl;
+	var tipoContenido;
+	var urlContenido
+
+// Load the required SharePoint libraries
+$(document).ready(function () {
+	//Get the URI decoded URLs.
+	
+	urlContenido = $("#url_contenido").html();
+	
+	hostweburl = "http://costab-impl.paginar.org";
+	appweburl = hostweburl + urlContenido;
+
+	// resources are in URLs in the form:
+	// web_url/_layouts/15/resource
+	var scriptbase = hostweburl + "/_layouts/15/";
+
+	// Load the js files and continue to the successHandler
+	tipoContenido = $("#tipo_contenido").html();
+	$.getScript(scriptbase + "SP.RequestExecutor.js", execCrossDomainRequest);
+});
+
+// Function to prepare and issue the request to get
+//  SharePoint data
+function execCrossDomainRequest() {
+	// executor: The RequestExecutor object
+	// Initialize the RequestExecutor with the app web URL.
+	var executor = new SP.RequestExecutor(appweburl);
+
+	// Issue the call against the app web.
+	// To get the title using REST we can hit the endpoint:
+	//      appweburl/_api/web/lists/getbytitle('listname')/items
+	// The response formats the data in the JSON format.
+	// The functions successHandler and errorHandler attend the
+	//      sucess and error events respectively.
+	// appweburl= http://costab-impl.paginar.org/esp/_api/web/lists/getByTitle('7%20maravillas')/items;
+	executor.executeAsync(
+		{
+		  url:
+			  appweburl + "/_api/web/lists/getByTitle(%20%27P%C3%A1ginas%27)/items?$filter=ContentType eq '" + tipoContenido + "'",
+		  method: "GET",
+		  headers: { "Accept": "application/json; odata=verbose" },
+		  success: successHandler,
+		  error: errorHandler
+		}
+	);
+}
+
+// Function to handle the success event.
+// Prints the data to the page.
+function successHandler(data) {
+	var jsonObject = JSON.parse(data.body);
+	var announcementsHTML = "";
+
+	var results = jsonObject.d.results;
+	for (var i = 0; i < results.length; i++) {
+		announcementsHTML = announcementsHTML +
+		  "<li onclick='selec(this)'><a href='maravilla-detalle.aspx?id=" + results[i].ID + "'><p>" + results[i].Title + "</p><div class='link'><img class='img-noselected' src='img/flecha_menu3.png'/><img class='img-selected' src='img/flecha_menu1.png'/></div></a></li>";
+	}
+
+	document.getElementById("lista_elementos").innerHTML =
+	announcementsHTML;
+}
+
+// Function to handle the error event.
+// Prints the error message to the page.
+function errorHandler(data, errorCode, errorMessage) {
+	document.getElementById("lista_elementos").innerText =
+		"Could not complete cross-domain call: " + errorMessage;
+}
+
+	</script>-->
+</head>
+
+<body>
+	<header id="header">
+		<h1><a href="descubre.html"><img class="volver" alt="volver" src="img/back.png"/></a>Maravillas</h1>
+	</header>
+	<section class="content cuaderno">
+		<nav id="navigation">
+			<ul id="lista_elementos">				
+				<li onclick="selec(this)"><a href="maravilla-detalle.html?id=1"><p>Maravilla 1</p><div class="link"><img class="img-noselected" src="img/flecha_menu3.png"/><img class="img-selected" src="img/flecha_menu1.png"/></div></a></li>				
+				<li onclick="selec(this)"><a href="maravilla-detalle.html?id=2"><p>Maravilla 2</p><div class="link"><img class="img-noselected" src="img/flecha_menu3.png"/><img class="img-selected" src="img/flecha_menu1.png"/></div></a></li>
+				<li onclick="selec(this)"><a href="maravilla-detalle.html?id=3"><p>Maravilla 3</p><div class="link"><img class="img-noselected" src="img/flecha_menu3.png"/><img class="img-selected" src="img/flecha_menu1.png"/></div></a></li>
+				<li onclick="selec(this)"><a href="maravilla-detalle.html?id=4"><p>Maravilla 4</p><div class="link"><img class="img-noselected" src="img/flecha_menu3.png"/><img class="img-selected" src="img/flecha_menu1.png"/></div></a></li>
+				<li onclick="selec(this)"><a href="maravilla-detalle.html?id=5"><p>Maravilla 5</p><div class="link"><img class="img-noselected" src="img/flecha_menu3.png"/><img class="img-selected" src="img/flecha_menu1.png"/></div></a></li>
+				<li onclick="selec(this)"><a href="maravilla-detalle.html?id=6"><p>Maravilla 6</p><div class="link"><img class="img-noselected" src="img/flecha_menu3.png"/><img class="img-selected" src="img/flecha_menu1.png"/></div></a></li>
+				<li onclick="selec(this)"><a href="maravilla-detalle.html?id=7"><p>Maravilla 7</p><div class="link"><img class="img-noselected" src="img/flecha_menu3.png"/><img class="img-selected" src="img/flecha_menu1.png"/></div></a></li>
+			</ul>
+		</nav>
+	</section>
+	<section class="main">
+		<nav>
+			<ul>
+				<li><a href="descubre.html"><img src="img/descubre.png"/></a></li>
+				<li class="sel"><a href="cosas-hacer.html"><img src="img/cosas-hacer-sel.png"/></a></li>
+				<li ><a href="organiza-viaje.html"><img src="img/organiza.png"/></a></li>
+			</ul>
+		</nav>
+	</section>
+</body>
+</html>

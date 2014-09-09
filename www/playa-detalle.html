@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<link rel='stylesheet'  href='css/estilos.css' type='text/css' media='all' />
+	<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="js/tratarXML.js"></script>
+	<script type="text/javascript">
+
+	var params = getSearchParameters();
+	
+	function getSearchParameters() {
+      var prmstr = window.location.search.substr(1);
+      return prmstr != null && prmstr != "" ? transformToAssocArray(prmstr) : {};
+	}
+
+	function transformToAssocArray( prmstr ) {
+	    var params = {};
+	    var prmarr = prmstr.split("&");
+	    for ( var i = 0; i < prmarr.length; i++) {
+	        var tmparr = prmarr[i].split("=");
+	        params[tmparr[0]] = tmparr[1];
+	    }
+	    return params;
+	}
+	function mostrarContenido(id){
+		$(".id"+ id).show();
+	}
+	$(document).ready(function () {
+    	mostrarContenido(params.id);        
+	});
+
+	</script>
+</head>
+
+<body>
+	<header id="header" class="id1">
+			<h1><a href="playas.html"><img class="volver" alt="volver" src="img/back.png"/></a><span class="titulo">Cala-Palmera</span></h1>
+	</header>
+	<header id="header" class="id2">
+			<h1><a href="playas.html"><img class="volver" alt="volver" src="img/back.png"/></a><span class="titulo">Playa de San Juan</span></h1>
+	</header>
+	<header id="header" class="id3">
+			<h1><a href="playas.html"><img class="volver" alt="volver" src="img/back.png"/></a><span class="titulo">Cala Cantalars</span></h1>
+	</header>
+	<header id="header" class="id4">
+			<h1><a href="playas.html"><img class="volver" alt="volver" src="img/back.png"/></a><span class="titulo">Playa Los Saladares</span></h1>
+	</header>
+	<section class="content id1">
+		<article>
+			<header>
+			<img id="img-header" src="img/paisaje.jpg">
+			<!--div id="playa-cuaderno"><a href="#"><img src="img/agregar-cuaderno.png"/></a></div>-->
+			<h1 class="titulo">Cala-Palmera</h1></header>
+			<div class="introduction"></div>
+			<div class="body">Playa de cantos rodados. Las calas ubicadas en el Cabo de las Huertas se encuentran situadas en una zona residencial y tranquila, y destacan por combinar roca y arena y ser de muy reducido tamaño. Algunas de ellas son naturistas, y en la mayoría se puede practicar el buceo, sobre todo en las más rocosas.​</div>
+		</article>
+			<!--<div id="button"><a href="playa-img.html"><img src="img/btn-info.png"/></a></div>-->
+	</section>	
+	<section class="content id2">
+		<article>
+			<header>
+			<img id="img-header" src="img/paisaje.jpg">
+			<!--div id="playa-cuaderno"><a href="#"><img src="img/agregar-cuaderno.png"/></a></div>-->
+			<h1 class="titulo">Playa de San Juan</h1></header>
+			<div class="introduction"></div>
+			<div class="body">​​​Extensa playa abierta de unos siete kilómetros de arena fina y una espléndida banda arenosa localizada en una zona residencial muy concurrida en los meses estivales y muy tranquila el resto del año, que dispone de servicios en primera línea de playa. Accesible minusválidos​.Extensa playa abierta de unos siete kilómetros de arena fina y una espléndida banda arenosa localizada en una zona residencial muy concurrida en los meses estivales y muy tranquila el resto del año, que dispone de servicios en primera línea de playa. Accesible minusválidos</div>
+		</article>
+			<!--<div id="button"><a href="playa-img.html"><img src="img/btn-info.png"/></a></div>-->
+	</section>	
+	<section class="content id3">
+		<article>
+			<header>
+			<img id="img-header" src="img/paisaje.jpg">
+			<!--div id="playa-cuaderno"><a href="#"><img src="img/agregar-cuaderno.png"/></a></div>-->
+			<h1 class="titulo">Cala Cantalars</h1></header>
+			<div class="introduction"></div>
+			<div class="body">​​Playa de cantos rodados. Las calas ubicadas en el Cabo de las Huertas se encuentran situadas en una zona residencial y tranquila, y destacan por combinar roca y arena y ser de muy reducido tamaño. Algunas de ellas son naturistas, y en la mayoría se puede practicar el buceo, sobre todo en las más rocosas.Playa de cantos rodados. Las calas ubicadas en el Cabo de las Huertas se encuentran situadas en una zona residencial y tranquila, y destacan por combinar roca y arena y ser de muy reducido tamaño. Algunas de ellas son naturistas, y en la mayoría se puede practicar el buceo, sobre todo en las más rocosas.</div>
+		</article>
+			<!--<div id="button"><a href="playa-img.html"><img src="img/btn-info.png"/></a></div>-->
+	</section>	
+	<section class="content id4">
+		<article>
+			<header>
+			<img id="img-header" src="img/paisaje.jpg">
+			<!--div id="playa-cuaderno"><a href="#"><img src="img/agregar-cuaderno.png"/></a></div>-->
+			<h1 class="titulo">Playa Los Saladares</h1></header>
+			<div class="introduction"></div>
+			<div class="body">Playa de arena. Acceso minusválidos. Playa situada en el extremo sur de Alicante, en una zona residencial tranquila, en un área de humedales de alto interés medioambiental que antiguamente fue lugar de explotación salinera. Es posible disfrutar de baños de sol y agua sobre una extensa superficie de fina arena, lejos del bullicio urbano. Playa natural. Existe una zona reservada para nudismo al final del paseo marítimo, hasta el límite con el término municipal de Elche</div>
+		</article>
+			<!--<div id="button"><a href="playa-img.html"><img src="img/btn-info.png"/></a></div>-->
+	</section>
+</body>
+</html>
