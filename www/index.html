@@ -4,6 +4,25 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<link rel='stylesheet'  href='css/estilos.css' type='text/css' media='all' />
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            
+            // Wait for device API libraries to load
+            //
+            document.addEventListener("deviceready", onDeviceReady, false);
+            
+            // device APIs are available
+            //
+            function onDeviceReady() {
+                var element = document.getElementById('deviceProperties');
+                element.innerHTML = 'Device Model: '    + device.model    + '<br />' +
+                'Device Cordova: '  + device.cordova  + '<br />' +
+                'Device Platform: ' + device.platform + '<br />' +
+                'Device UUID: '     + device.uuid     + '<br />' +
+                'Device Version: '  + device.version  + '<br />';
+            }
+        
+		</script>
     <!--<script type="text/javascript" src="cordova.js">-->
     <!--<script type="text/javascript">
         /*var imgsrc = 'http://www.google.es/intl/en_com/images/logo_plain.png';
@@ -41,28 +60,10 @@
 </html>
 <!--<html>
     <head>
-        <title>Device Properties Example</title>
+        <title>Device Properties Example</title>-->
         
-        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-        <script type="text/javascript" charset="utf-8">
-            
-            // Wait for device API libraries to load
-            //
-            document.addEventListener("deviceready", onDeviceReady, false);
-            
-            // device APIs are available
-            //
-            function onDeviceReady() {
-                var element = document.getElementById('deviceProperties');
-                element.innerHTML = 'Device Model: '    + device.model    + '<br />' +
-                'Device Cordova: '  + device.cordova  + '<br />' +
-                'Device Platform: ' + device.platform + '<br />' +
-                'Device UUID: '     + device.uuid     + '<br />' +
-                'Device Version: '  + device.version  + '<br />';
-            }
         
-            </script>
-    </head>
+    <!--</head>
     <body>
         <p id="deviceProperties">Loading device properties...</p>
     </body>
