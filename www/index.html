@@ -24,10 +24,12 @@
             }
 
 			function gotFS(fileSystem) {
+				alert("Accede al sistema de archivos!!!");
 				fileSystem.root.getFile("readme.txt", null, gotFileEntry, fail);
 			}
 
 			function gotFileEntry(fileEntry) {
+				alert("Coje el archivo!!!");
 				fileEntry.file(gotFile, fail);
 			}
 
@@ -55,6 +57,7 @@
 			}
 
 			function fail(evt) {
+				alert("No funciona :(");
 				console.log(evt.target.error.code);
 			}
 
