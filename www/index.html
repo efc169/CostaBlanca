@@ -12,9 +12,14 @@
 //
 document.addEventListener("deviceready", onDeviceReady, false);
 
+//Needed attributes
+var xmlString = "";
+var xmlDoc = "";
+var xml = "";
+var playas = new Array();
+
 // device APIs are available
 //
-var xmlString = "";
 function onDeviceReady() {
 	/*var element = document.getElementById('deviceProperties');
 	element.innerHTML = 'Device Model: '    + device.model    + '<br />' +
@@ -41,6 +46,7 @@ function gotFile(file){
 		console.log("Read as text");
 		console.log(evt.target.result);
 		xmlString = evt.target.result;
+		parseXMLtoDoc();
 	};
 	reader.readAsText(file);
 }
@@ -49,13 +55,26 @@ function fail(evt) {
 	//alert("No funciona :(");
 	console.log(evt.target.error.code);
 }
-			
+		
+function parseXMLtoDoc(){
+	xmlDoc = $.parseXML(xmlString);
+	xml = $(xmlDoc);
+}		
+//Recorrer el XML y mostrarlo en lista
+//"<li onclick='selec(this)'><a href='playa-detalle.aspx?id=" + results[i].ID + "'><p>" + results[i].Title + "</p><div class='link'><img class='img-noselected' src='img/flecha_menu3.png'/><img class='img-selected' src='img/flecha_menu1.png'/></div></a></li>";
 function Playa(nombre, id){
     this.nombre = nombre;
 	this.id = id;
 }
+function recogerPlayas(){
+	xml.find("entry").each(function(){
+		nombre = $(this).find("d:Title").html();
+		id = $(this).find("d:Id").html();
+		playa = Playa(nombre, id);
+		playas.push(playa);
+	});
+}
 function mostrarPlayas(){
-	playas = CargarXMLPlayas();
 	var announcementsHTML = "";
 	for (var i = 0; i < playas.length; i++) {
 		announcementsHTML = announcementsHTML +
