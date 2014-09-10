@@ -68,8 +68,8 @@ function Playa(nombre, id){
 }
 function recogerPlayas(){
 	xml.find("entry").each(function(){
-		nombre = $(this).find("d:Title").html();
-		id = $(this).find("d:Id").html();
+		nombre = $(this).find("Title").html();
+		id = $(this).find("Id").html();
 		playa = Playa(nombre, id);
 		playas.push(playa);
 	});
