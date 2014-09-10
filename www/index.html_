@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<link rel='stylesheet'  href='css/estilos.css' type='text/css' media='all' />
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            
+            // Wait for device API libraries to load
+            //
+            document.addEventListener("deviceready", onDeviceReady, false);
+            
+            // device APIs are available
+            //
+			var xmlString = "";
+            function onDeviceReady() {
+                /*var element = document.getElementById('deviceProperties');
+                element.innerHTML = 'Device Model: '    + device.model    + '<br />' +
+                'Device Cordova: '  + device.cordova  + '<br />' +
+                'Device Platform: ' + device.platform + '<br />' +
+                'Device UUID: '     + device.uuid     + '<br />' +
+                'Device Version: '  + device.version  + '<br />';*/
+				window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+            }
+
+			function gotFS(fileSystem) {
+				alert("Accede al sistema de archivos!!!");
+				fileSystem.root.getFile("CostaBlancaRes/playas.xml", null, gotFileEntry, fail);
+			}
+
+			function gotFileEntry(fileEntry) {
+				alert("Coje el archivo!!!");
+				fileEntry.file(gotFile, fail);
+			}
+
+			function gotFile(file){
+				//readDataUrl(file);
+				readAsText(file);
+			}
+
+			function readDataUrl(file) {
+				var reader = new FileReader();
+				reader.onloadend = function(evt) {
+					console.log("Read as data URL");
+					console.log(evt.target.result);
+					alert(evt.target.result);
+				};
+				reader.readAsDataURL(file);
+			}
+
+			function readAsText(file) {
+				var reader = new FileReader();
+				reader.onloadend = function(evt) {
+					console.log("Read as text");
+					console.log(evt.target.result);
+					xmlString = evt.target.result;
+				};
+				reader.readAsText(file);
+			}
+
+			function fail(evt) {
+				alert("No funciona :(");
+				console.log(evt.target.error.code);
+			}
+
+
+		</script>
+    <!--<script type="text/javascript" src="cordova.js">-->
+    <!--<script type="text/javascript">
+        /*var imgsrc = 'http://www.google.es/intl/en_com/images/logo_plain.png';
+        var img = new Image();
+        
+        img.onerror = function () {
+            //alert("No hay conexion a internet.");
+            //window.location.href='cosas-hacer.html';
+        }
+       // alert(""+ device.uuid);
+        img.onload = function () {
+            //alert("Hay conexion a internet.");
+            
+            window.location.href='http://dmzsha02.dip-alicante.es/Eng/Documents/index.aspx';
+        }
+        img.src = imgsrc;*/
+    </script>-->
+</head>
+
+<body>
+	<header id="header-index">
+		<img class="background" src="img/fondo-index.png" alt="Costa Blanca" />
+	</header>
+    <div id="body-login">
+        <img class="border-login" src="img/border-login.png"/>  
+        <h1>Descubre la Costa Blanca</h1>
+    	<div id="bottom-login">
+    		<!--<a href="login.aspx">Login<img id="bt-login" class="bt-home" src="img/bottom-login.png"/></a>-->
+    		<!--<a href="register.aspx"><img  class="bt-home" src="img/bottom-registro.png"/></a>-->
+            <a href="descubre.html"><img  class="bt-home" src="img/bottom-anonimo.png"/></a>
+    		<a href="descubre.html" class="help"><img  class="bt-home" src="img/bottom-ayuda.png"/></a>
+    	</div>
+		<div id="deviceProperties">Loading device properties...</div>
+    </div>
+</body>
+</html>
+<!--<html>
+    <head>
+        <title>Device Properties Example</title>-->
+        
+        
+    <!--</head>
+    <body>
+        <p id="deviceProperties">Loading device properties...</p>
+    </body>
+</html>-->
