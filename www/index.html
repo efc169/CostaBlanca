@@ -25,7 +25,7 @@
 
 			function gotFS(fileSystem) {
 				alert("Accede al sistema de archivos!!!");
-				fileSystem.root.getFile("readme.txt", null, gotFileEntry, fail);
+				fileSystem.root.getFile("CostaBlancaRes/playas.xml", null, gotFileEntry, fail);
 			}
 
 			function gotFileEntry(fileEntry) {
