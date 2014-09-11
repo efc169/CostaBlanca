@@ -46,9 +46,9 @@ function gotFile(file){
 		console.log("Read as text");
 		console.log(evt.target.result);
 		xmlString = evt.target.result;
-		parseXMLtoDoc();
 	};
 	reader.readAsText(file);
+	parseXMLtoDoc();
 }
 
 function fail(evt) {
@@ -59,6 +59,7 @@ function fail(evt) {
 function parseXMLtoDoc(){
 	xmlDoc = $.parseXML(xmlString);
 	xml = $(xmlDoc);
+	recogerPlayas();
 }		
 //Recorrer el XML y mostrarlo en lista
 //"<li onclick='selec(this)'><a href='playa-detalle.aspx?id=" + results[i].ID + "'><p>" + results[i].Title + "</p><div class='link'><img class='img-noselected' src='img/flecha_menu3.png'/><img class='img-selected' src='img/flecha_menu1.png'/></div></a></li>";
@@ -70,7 +71,7 @@ function recogerPlayas(){
 	xml.find("entry").each(function(){
 		nombre = $(this).find("Title").html();
 		id = $(this).find("Id").html();
-		playa = Playa(nombre, id);
+		playa = new Playa(nombre, id);
 		playas.push(playa);
 	});
 	mostrarPlayas();
