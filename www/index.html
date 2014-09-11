@@ -32,7 +32,8 @@ function onDeviceReady() {
 
 function gotFS(fileSystem) {
 	//alert("Accede al sistema de archivos!!!");
-	fileSystem.root.getFile("CostaBlancaRes/playas.xml", null, gotFileEntry, fail);
+	//fileSystem.root.getFile("CostaBlancaRes/playas.xml", null, gotFileEntry, fail);
+	fileSystem.root.getFile("storage/emulated/0/CostaBlancaRes/playas.xml", null, gotFileEntry, fail);
 }
 
 function gotFileEntry(fileEntry) {
