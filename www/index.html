@@ -46,9 +46,9 @@ function gotFile(file){
 		console.log("Read as text");
 		console.log(evt.target.result);
 		xmlString = evt.target.result;
+		parseXMLtoDoc();
 	};
 	reader.readAsText(file);
-	parseXMLtoDoc();
 }
 
 function fail(evt) {
