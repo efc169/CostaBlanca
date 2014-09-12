@@ -21,50 +21,16 @@ var playas = new Array();
 // device APIs are available
 //
 function onDeviceReady() {
-	descargarArchivo();
-	//leerArchivo();
-}
-
-
-//Descarga del archivo
-function descargarArchivo(){
-	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
-};
-
-function onFileSystemSuccess(fileSystem) {
-	alert("Descarga: Accede al sistema de archivos");
-	fileSystem.root.getFile("CostaBlancaRes/playas/playas.xml", {create: true, exclusive: false}, gotFileEntryPrueba, fail);
-}
-	
-function gotFileEntryPrueba(fileEntry) {
-	alert("Descarga: Accede al archivo");
-	var sPath = fileEntry.fullPath.replace("playas.xml","");
-	var fileTransfer = new FileTransfer();
-	fileEntry.remove();
-
-	fileTransfer.download(
-		"http://dmzsha02.dip-alicante.es/Esp/Cosas_que_hacer/playas_y_calas/_api/web/lists/getByTitle%28%20%27P%C3%A1ginas%27%29/items?$top=5000&$filter=ContentType%20eq%20%27Playa%27",
-		sPath + "playas.xml",
-		function(theFile) {
-			alert("Descarga completa: " + theFile.toURI());
-			console.log("download complete: " + theFile.toURI());
-			//showLink(theFile.toURI());
-		},
-		function(error) {
-			alert("download error source " + error.source);
-			console.log("download error source " + error.source);
-			alert("download error target " + error.target);
-			console.log("download error target " + error.target);
-			alert("upload error code: " + error.code);
-			console.log("upload error code: " + error.code);
-		}
-	);
-}
-
-//Lectura del archivo
-function leerArchivo(){
+	/*var element = document.getElementById('deviceProperties');
+	element.innerHTML = 'Device Model: '    + device.model    + '<br />' +
+	'Device Cordova: '  + device.cordova  + '<br />' +
+	'Device Platform: ' + device.platform + '<br />' +
+	'Device UUID: '     + device.uuid     + '<br />' +
+	'Device Version: '  + device.version  + '<br />';*/
+	//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 	window.resolveLocalFileSystemURI("file:///data/data/com.example.costablanca/files/playas.xml", gotFileEntry, fail); 
 }
+
 function gotFS(fileSystem) {
 	alert("Accede al sistema de archivos!!!");
 	
