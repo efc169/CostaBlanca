@@ -30,7 +30,7 @@ function onDeviceReady() {
 function descargarArchivo(){
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
 };
-}
+
 function onFileSystemSuccess(fileSystem) {
 	alert("Descarga: Accede al sistema de archivos");
 	fileSystem.root.getFile("CostaBlancaRes/playas/playas.xml", {create: true, exclusive: false}, gotFileEntryPrueba, fail);
