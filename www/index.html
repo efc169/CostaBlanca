@@ -32,6 +32,7 @@ function onDeviceReady() {
 
 function gotFS(fileSystem) {
 	alert("Accede al sistema de archivos!!!");
+	
 	fileSystem.root.getFile("data/data/com.example.costablanca/files/playas.xml", null, gotFileEntry, fail);
 	//fileSystem.root.getFile("/mnt/shell/emulated/0/CostaBlancaRes/playas.xml", null, gotFileEntry, fail);
 }
@@ -53,8 +54,8 @@ function gotFile(file){
 }
 
 function fail(evt) {
-	alert("No funciona: " + evt.target.error.code);
-	console.log(evt.target.error.code);
+	alert("No funciona: " + evt);
+	console.log(evt);
 }
 		
 function parseXMLtoDoc(){
