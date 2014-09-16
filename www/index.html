@@ -33,7 +33,7 @@ function descargarArchivo(){
 
 function onFileSystemSuccess(fileSystem) {
 	alert("Descarga: Accede al sistema de archivos");
-	fileSystem.root.getFile("dumy.html", {create: true, exclusive: false}, gotFileEntryPrueba, fail);
+	fileSystem.root.getFile("dummy.html", {create: true, exclusive: false}, gotFileEntryPrueba, fail);
 }
 	
 function gotFileEntryPrueba(fileEntry) {
